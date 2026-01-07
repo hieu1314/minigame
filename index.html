@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mini game số ngẫu nhiên</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="container">
+
+  <!-- SPLASH SCREEN -->
+<div id="splash">
+  <h1 id="splashText">Mini game số ngẫu nhiên</h1>
+</div>
+
+<div class="container hidden"> <!-- Ẩn nội dung web ban đầu -->
+  <!-- Nội dung hiện tại của bạn -->
+  ...
+</div>
+
+<script>
+window.addEventListener("load", () => {
+  const splash = document.getElementById("splash");
+  const container = document.querySelector(".container");
+
+  // Sau 17s ẩn splash và hiện container
+  setTimeout(() => {
+    splash.style.display = "none";
+    container.classList.remove("hidden");
+  }, 17000);
+});
+</script>
+
+  <p id="timeStatus"></p>
+
+  <!-- CHỌN ĐÀI -->
+  <div class="section">
+    <h3><img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN Flag" width="24"> Chọn đài</h3>
+    <div class="btn-group">
+      <button class="region-btn">Miền Nam</button>
+      <button class="region-btn">Miền Trung</button>
+      <button class="region-btn">Miền Bắc</button>
+    </div>
+  </div>
+
+  <!-- CHỌN CHẾ ĐỘ -->
+  <div class="section">
+    <h3>🎯 Chọn loại hình</h3>
+
+    <label>
+      <input type="radio" name="mode" value="bao" checked />
+      Bao lô 2 số (00–99)
+    </label>
+
+    <label>
+      <input type="radio" name="mode" value="da" />
+      Đá số (3 cặp)
+    </label>
+
+    <div class="control">
+      <label>Số lượng:</label>
+      <input type="number" id="count" min="1" max="10" value="1" />
+    </div>
+
+    <button id="startBtn">🙏 BẮT ĐẦU 🙏</button>
+  </div>
+
+</div>
+
+<!-- HIỆU ỨNG -->
+<div id="overlay" class="hidden">
+  <div class="lightning"></div>
+</div>
+
+<!-- POPUP KẾT QUẢ -->
+<div id="popup" class="hidden">
+  <h2>🔮 KẾT QUẢ 🔮</h2>
+  <div id="result"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

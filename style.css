@@ -1,0 +1,170 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle, #111, #000);
+  color: #fff;
+  text-align: center;
+}
+
+.container {
+  padding: 20px;
+}
+
+.section {
+  margin: 20px 0;
+}
+
+.btn-group button {
+  margin: 5px;
+  padding: 10px 15px;
+  background: #222;
+  border: 1px solid #555;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn-group button.active {
+  background: gold;
+  color: #000;
+}
+
+#startBtn {
+  margin-top: 15px;
+  padding: 12px 20px;
+  font-size: 16px;
+  background: crimson;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+#result {
+  margin-top: 20px;
+  color: gold;
+  font-size: 32px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Overlay hiệu ứng bão */
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  overflow: hidden;
+}
+
+/* Mưa */
+#overlay::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px);
+  background-size: 2px 20px, 3px 20px;
+  animation: rain 0.5s linear infinite;
+}
+
+/* Sấm chớp */
+#overlay .lightning {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: white;
+  opacity: 0;
+  pointer-events: none;
+  animation: lightning 6s linear forwards;
+}
+
+/* Animation mưa */
+@keyframes rain {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: -10px 100%, -20px 100%; }
+}
+
+/* Animation sấm chớp */
+@keyframes lightning {
+  0%, 10%, 20%, 30%, 50%, 70%, 90%, 100% { opacity: 0; }
+  15%, 35%, 55%, 75%, 95% { opacity: 1; }
+}
+
+#popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  z-index: 20;
+}
+
+@keyframes shake {
+  0% { transform: translate(0); }
+  25% { transform: translate(5px, 0); }
+  50% { transform: translate(-5px, 0); }
+  75% { transform: translate(5px, 0); }
+}
+
+/* SPLASH SCREEN */
+#splash {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  overflow: hidden;
+}
+
+#splashText {
+  color: gold;
+  font-size: 40px;
+  text-align: center;
+  opacity: 0;
+  transform: scale(1);
+  animation: 
+    splashFadeIn 6s forwards,    /* 0-6s */
+    splashZoom 3s 6s forwards,   /* 6-9s */
+    splashShrink 2s 9s forwards, /* 9-11s */
+    splashDisperse 6s 11s forwards; /* 11-17s */
+}
+
+/* 1. Fade in chữ */
+@keyframes splashFadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* 2. Phóng to 300% */
+@keyframes splashZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(3); }
+}
+
+/* 3. Thu nhỏ về 100% */
+@keyframes splashShrink {
+  0% { transform: scale(3); }
+  100% { transform: scale(1); }
+}
+
+/* 4. Rã chữ ra và rơi xuống */
+@keyframes splashDisperse {
+  0% { letter-spacing: 0px; transform: translateY(0) scale(1); opacity: 1; }
+  50% { letter-spacing: 20px; transform: translateY(50px) scale(1); opacity: 0.7; }
+  100% { letter-spacing: 40px; transform: translateY(500px) scale(1); opacity: 0; }
+}
