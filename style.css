@@ -172,7 +172,7 @@ body {
 @media (max-width: 768px) {
 
   body {
-    font-size: 16px;
+    font-size: 20px;
   }
 
   .container {
@@ -180,11 +180,11 @@ body {
   }
 
   h1 {
-    font-size: 7vw;
+    font-size: 9vw;
   }
 
   h3 {
-    font-size: 5vw;
+    font-size: 7vw;
   }
 
   .section {
@@ -195,20 +195,28 @@ body {
   .btn-group button,
   #startBtn {
     width: 100%;
-    font-size: 18px;
-    padding: 14px;
+    font-size: 20px;
+    padding: 18px;
   }
 
   /* Input số */
   input[type="number"] {
     width: 100%;
-    font-size: 18px;
-    padding: 10px;
+    font-size: 20px;
+    padding: 15px;
   }
 
   /* Kết quả to rõ */
   #result {
-    font-size: 10vw;
+     position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-size: 14vw;   /* to hơn cho mobile */
+    pointer-events: none;
+    margin: 0;         /* tránh lệch */
+    text-align: center;
   }
 
   /* Popup vừa màn */
